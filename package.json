@@ -1,0 +1,47 @@
+{
+  "name": "nestjs-env-var-provider",
+  "version": "1.0.0",
+  "description": "Environment variables provider for Nest.JS project",
+  "main": "./src/main.ts",
+  "scripts": {
+    "test": "dotenv -e ./__tests__/.env -- jest --verbose -i --detectOpenHandles --forceExit",
+    "lint": "tsc --noemit && eslint \"{src,__tests__}/**/*.ts\" --fix",
+    "prebuild": "rimraf dist",
+    "build": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "npm run build && cp -r ./dist/* .",
+    "postpublish": "git clean -fd",
+    "postinstall": "node postinstall.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxime-aubry/nestjs-env-var-provider.git"
+  },
+  "keywords": [
+    "nestjs",
+    "nest.js"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maxime-aubry/nestjs-env-var-provider/issues"
+  },
+  "homepage": "https://github.com/maxime-aubry/nestjs-env-var-provider#readme",
+  "dependencies": {
+    "@nestjs/common": "^11.1.0",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.1.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^11.1.0",
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.15.3",
+    "dotenv-cli": "^8.0.0",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.3.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
