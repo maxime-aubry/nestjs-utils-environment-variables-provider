@@ -6,7 +6,7 @@ import { validate } from './environment-variables.validation';
 
 @Module({})
 export class EnvironmentConfigModule {
-  static forRoot<TEnv extends object>(envClass: ClassConstructor<TEnv>): DynamicModule {
+  static forRoot<TCollectionOfEnvironmentVariables extends object>(envClass: ClassConstructor<TCollectionOfEnvironmentVariables>): DynamicModule {
     return {
       module: EnvironmentConfigModule,
       imports: [

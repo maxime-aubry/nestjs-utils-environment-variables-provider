@@ -1,5 +1,3 @@
-console.log(`
-\t\tThanks for using nestjs-env-var-provider!
-`);
+console.log(`Thanks for @nestjs-utils/environment-variables-provider!`);
 
 new Promise((r) => setTimeout(r, 5000));

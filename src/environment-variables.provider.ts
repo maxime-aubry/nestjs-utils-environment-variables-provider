@@ -4,10 +4,10 @@ import { parse } from './parser';
 
 @Injectable()
 export class EnvironmentVariablesProvider {
-    public get<TEnv extends object>(
-        envClass: ClassConstructor<TEnv>
-    ): TEnv {
-        const variables: TEnv = parse<TEnv>(envClass, process.env);
+    public getEnvironmentVariables<TCollectionOfEnvironmentVariables extends object>(
+        envClass: ClassConstructor<TCollectionOfEnvironmentVariables>
+    ): TCollectionOfEnvironmentVariables {
+        const variables: TCollectionOfEnvironmentVariables = parse<TCollectionOfEnvironmentVariables>(envClass, process.env);
         return variables;
     }
 }

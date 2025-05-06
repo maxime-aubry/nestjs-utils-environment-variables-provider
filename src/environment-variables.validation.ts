@@ -3,8 +3,11 @@ import { validateSync, ValidationError } from 'class-validator';
 import { InvalidEnvironmentVariables } from './exception';
 import { parse } from './parser';
 
-export function validate<TEnv extends object>(envClass: ClassConstructor<TEnv>, config: Record<string, unknown>): TEnv {
-  const variables: TEnv = parse<TEnv>(envClass, config);
+export function validate<TCollectionOfEnvironmentVariables extends object>(
+  envClass: ClassConstructor<TCollectionOfEnvironmentVariables>,
+  config: Record<string, unknown>,
+): TCollectionOfEnvironmentVariables {
+  const variables: TCollectionOfEnvironmentVariables = parse<TCollectionOfEnvironmentVariables>(envClass, process.env);
   const errors: ValidationError[] = validateSync(variables, { skipMissingProperties: false });
 
   if (errors.length > 0) throw new InvalidEnvironmentVariables(errors);
