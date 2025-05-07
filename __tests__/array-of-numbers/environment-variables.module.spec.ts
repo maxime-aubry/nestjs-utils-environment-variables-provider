@@ -1,7 +1,4 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { EnvironmentConfigModule } from "../../src/environment-variables.module";
-import { EnvironmentVariablesProvider } from '../../src/environment-variables.provider';
-import { clearEnvironmentVariables, setEnvironmentVariables } from '../env.utils';
+import { clearEnvironmentVariables, expectExceptionAsync, expectValueAsync, setEnvironmentVariables } from '../test.utils';
 import { EnvironmentVariables } from './environment-variable';
 
 describe('Tests array of numbers.', () => {
@@ -9,17 +6,11 @@ describe('Tests array of numbers.', () => {
 
     it("Environment variable 'TEST' equals to [1,2].", async () => {
         setEnvironmentVariables("1,2");
+        await expectValueAsync(EnvironmentVariables, [1, 2]);
+    });
 
-        const moduleRef: TestingModule = await Test.createTestingModule({
-            imports: [EnvironmentConfigModule.forRoot(EnvironmentVariables)],
-        }).compile();
-
-        expect(moduleRef).toBeDefined();
-
-        const environmentVariablesProvider: EnvironmentVariablesProvider = moduleRef.get(EnvironmentVariablesProvider);
-        const variables: EnvironmentVariables = environmentVariablesProvider.getEnvironmentVariables(EnvironmentVariables);
-        
-        expect(variables).toBeInstanceOf(EnvironmentVariables);
-        expect(variables.TEST).toEqual([1, 2]);
+    it("Environment variable 'TEST' throws an exeception with wrong values [1,a].", async () => {
+        setEnvironmentVariables("1,a");
+        await expectExceptionAsync(EnvironmentVariables);
     });
 });

@@ -5,7 +5,7 @@ export function parse<TCollectionOfEnvironmentVariables extends object>(
     config: Record<string, unknown>,
 ): TCollectionOfEnvironmentVariables {
     const variables: TCollectionOfEnvironmentVariables = plainToInstance(envClass, config, {
-        enableImplicitConversion: true,
+        enableImplicitConversion: false,
         excludeExtraneousValues: true,
     });
     return variables;

@@ -1,6 +1,7 @@
 import { NumberProperty } from "../../src/decorators";
+import { ICollectionOfEnvironmentVariables } from "../test.utils";
 
-export class EnvironmentVariables {
+export class EnvironmentVariables implements ICollectionOfEnvironmentVariables<number> {
     @NumberProperty()
     public readonly TEST!: number;
 }

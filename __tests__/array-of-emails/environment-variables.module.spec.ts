@@ -4,8 +4,8 @@ import { EnvironmentVariables } from './environment-variable';
 describe('Tests array of strings.', () => {
     afterEach(() => clearEnvironmentVariables());
 
-    it("Environment variable 'TEST' equals to ['azerty','ytreza'].", async () => {
-        setEnvironmentVariables("azerty,ytreza");
-        await expectValueAsync(EnvironmentVariables, ['azerty','ytreza']);
+    it("Environment variable 'TEST' equals to ['a.a@domain.fr','b.b@domain.fr'].", async () => {
+        setEnvironmentVariables("a.a@domain.fr,b.b@domain.fr");
+        await expectValueAsync(EnvironmentVariables, ['a.a@domain.fr','b.b@domain.fr']);
     });
 });

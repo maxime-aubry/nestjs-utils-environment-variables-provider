@@ -1,7 +1,7 @@
-import { StringProperty } from "../../src/decorators";
+import { UUIDProperty } from "../../src/decorators";
 import { ICollectionOfEnvironmentVariables } from "../test.utils";
 
 export class EnvironmentVariables implements ICollectionOfEnvironmentVariables<string[]> {
-    @StringProperty({ each: true })
+    @UUIDProperty("4", { each: true })
     public readonly TEST!: string[];
 }

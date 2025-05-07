@@ -1,7 +1,7 @@
-import { StringProperty } from "../../src/decorators";
+import { EmailProperty } from "../../src/decorators";
 import { ICollectionOfEnvironmentVariables } from "../test.utils";
 
 export class EnvironmentVariables implements ICollectionOfEnvironmentVariables<string> {
-    @StringProperty()
+    @EmailProperty()
     public readonly TEST!: string;
 }
