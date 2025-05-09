@@ -5,7 +5,7 @@ import { StringProperty } from "./string-property.decorator";
 import { UrlProperty } from "./url-property.decorator";
 import { UUIDProperty } from "./uuid-property.decorator";
 
-export {
+export const Decorators = {
     BooleanProperty,
     EmailProperty,
     NumberProperty,
