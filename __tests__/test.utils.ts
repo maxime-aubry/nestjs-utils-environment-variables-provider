@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { ClassConstructor } from "class-transformer";
 import { EnvironmentConfigModule } from "../src/environment-variables.module";
 import { EnvironmentVariablesProvider } from "../src/environment-variables.provider";
-import { InvalidEnvironmentVariables } from "../src/exception";
+import { InvalidEnvironmentVariablesException } from "../src/exception";
 
 export interface ICollectionOfEnvironmentVariables<TValue> {
     readonly TEST: TValue;
@@ -40,5 +40,5 @@ export async function expectExceptionAsync<TCollectionOfEnvironmentVariables ext
         Test.createTestingModule({
             imports: [EnvironmentConfigModule.forRoot(envClass)],
         }).compile(),
-    ).rejects.toThrow(InvalidEnvironmentVariables);
+    ).rejects.toThrow(InvalidEnvironmentVariablesException);
 };
