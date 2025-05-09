@@ -7,15 +7,15 @@ import { InvalidCastException } from '../exception';
 export function BooleanProperty(validationOptions?: ValidationOptions): PropertyDecorator {
   return function (target: Object, propertyKey: string | symbol) {
     if (validationOptions?.each)
-      TransformToArray()(target, propertyKey);
+      TransformToArrayOfBooleans()(target, propertyKey);
     else
-    TransformToBoolean()(target, propertyKey);
+      TransformToBoolean()(target, propertyKey);
     IsBoolean(validationOptions)(target, propertyKey);
     Expose()(target, propertyKey);
   };
 };
 
-function TransformToArray(): PropertyDecorator {
+function TransformToArrayOfBooleans(): PropertyDecorator {
   return Transform(({ value, key }) => {
     const values: boolean[] = value.split(SEPARATOR).map((item: string) => transformToBoolean(value as string, key));
     return values;
