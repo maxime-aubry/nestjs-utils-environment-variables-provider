@@ -1,8 +1,7 @@
 import { Expose, Transform } from 'class-transformer';
 import { IsNumber, IsNumberOptions } from 'class-validator';
-import { ValidationOptions } from './type';
 import { SEPARATOR } from '../utils';
-import { InvalidCastException } from '../exception';
+import { ValidationOptions } from './type';
 
 export function NumberProperty(options?: IsNumberOptions, validationOptions?: ValidationOptions): PropertyDecorator {
   return function (target: Object, propertyKey: string | symbol) {
@@ -16,20 +15,20 @@ export function NumberProperty(options?: IsNumberOptions, validationOptions?: Va
 };
 
 function TransformToArrayOfNumbers(): PropertyDecorator {
-  return Transform(({ value, key }) => {
+  return Transform(({ value }) => {
     if (typeof value !== 'string') return value;
-    const values: Number[] = value.split(SEPARATOR).map((item: string) => transformToNumber(item, key));
+    const values: (number | null)[] = value.split(SEPARATOR).map((item: string) => transformToNumber(item));
     return values;
   });
 };
 
 function TransformToNumber(): PropertyDecorator {
-  return Transform(({ value, key }) => transformToNumber(value as string, key));
+  return Transform(({ value }) => transformToNumber(value as string));
 };
 
-function transformToNumber(value: any, key: string): number {
+function transformToNumber(value: any): number | null {
   const numberValue: number = Number(value);
   if (Number.isNaN(numberValue))
-    throw new InvalidCastException(key);
+    return null;
   return numberValue;
 };

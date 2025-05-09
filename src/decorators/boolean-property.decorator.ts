@@ -1,8 +1,7 @@
 import { Expose, Transform } from 'class-transformer';
 import { isBoolean, isBooleanString, registerDecorator, ValidationArguments } from 'class-validator';
-import { ValidationOptions } from './type';
 import { SEPARATOR } from '../utils';
-import { InvalidCastException } from '../exception';
+import { ValidationOptions } from './type';
 
 export function BooleanProperty(validationOptions?: ValidationOptions): PropertyDecorator {
   return function (target: Object, propertyKey: string | symbol) {
@@ -16,21 +15,21 @@ export function BooleanProperty(validationOptions?: ValidationOptions): Property
 };
 
 function TransformToArrayOfBooleans(): PropertyDecorator {
-  return Transform(({ value, key }) => {
-    const values: boolean[] = value.split(SEPARATOR).map((item: string) => transformToBoolean(value as string, key));
+  return Transform(({ value }) => {
+    const values: (boolean | null)[] = value.split(SEPARATOR).map((item: string) => transformToBoolean(item));
     return values;
   });
 };
 
 function TransformToBoolean(): PropertyDecorator {
-  return Transform(({ value, key }) => transformToBoolean(value as string, key));
+  return Transform(({ value }) => transformToBoolean(value as string));
 };
 
-function transformToBoolean(value: string, key: string): boolean {
+function transformToBoolean(value: string): boolean | null {
   const lowerValue: string = value.trim().toLowerCase();
   if (lowerValue === 'true') return true;
   if (lowerValue === 'false') return false;
-  throw new InvalidCastException(key);
+  return null;
 };
 
 function IsBoolean(validationOptions?: ValidationOptions) {
