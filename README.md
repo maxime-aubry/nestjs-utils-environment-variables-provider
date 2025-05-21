@@ -1,18 +1,19 @@
-# @nestjs-utils/environment-variables-provider
-Environment variables provider for Nest.JS project
+# nestjs-environment-variables-provider
+Environment variables provider for Nest.JS project.
 
-This project enables you to get a collection of environment variable as a class.
+This project enables you to get a collection of environment variable as a class and validate model using by a class validation way.
 
 Define a class model to store your environment variables :
 
 ``` Typescript
-import { Expose } from "class-transformer";
-import { IsString } from "class-validator";
+import { EmailProperty, StringProperty } from 'nestjs-environment-variables-provider';
 
 export class EnvironmentVariables {
-    @IsString()
-    @Expose()
-    public readonly TEST!: string;
+    @StringProperty()
+    public readonly DATABASE_URL!: string;
+
+    @EmailProperty()
+    public readony ADMIN_EMAIL!: string;
 }
 ```
 
@@ -20,7 +21,7 @@ Define your module and register the "EnvironmentConfigModule" module :
 
 ``` Typescript
 import { Module } from '@nestjs/common';
-import { EnvironmentConfigModule } from '@nestjs-utils/environment-variables-provider';
+import { EnvironmentConfigModule } from 'nestjs-environment-variables-provider';
 import { EnvironmentVariables } from './environment-variables.ts
 
 @Module({
@@ -37,7 +38,7 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class CustomService {
     construtor(
-
+        
     ) {}
 }
 
