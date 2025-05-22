@@ -1,6 +1,6 @@
 {
-  "name": "nestjs-environment-variables-provider-tests",
-  "version": "1.0.0",
+  "name": "@internal/nestjs-environment-variables-provider-tests",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
