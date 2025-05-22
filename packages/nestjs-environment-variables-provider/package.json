@@ -24,7 +24,8 @@
     "prepack": "npm run clean && npm run build",
     "test": "npm run lint && npm run tsc && npm run format && npm run unit",
     "tsc": "tsc",
-    "watch": "npm run build-js-esm -- --watch & npm run build-js-cjs -- --watch & node -e \"fs.watch('src', () => require('child_process').exec('npm run copy-styles'))\""
+    "watch": "npm run build-js-esm -- --watch & npm run build-js-cjs -- --watch & node -e \"fs.watch('src', () => require('child_process').exec('npm run copy-styles'))\"",
+    "docs": "typedoc"
   },
   "keywords": [
     "nestjs",
