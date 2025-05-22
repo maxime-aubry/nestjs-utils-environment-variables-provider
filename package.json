@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "nestjs-environment-variables-provider monorepo",
   "type": "module",
+  "repository": "git@github.com:maxime-aubry/nestjs-utils-environment-variables-provider.git",
   "workspaces": [
     "packages/*",
     "tests"

@@ -1,7 +1,7 @@
 import { Expose } from 'class-transformer';
 import { IsString } from 'class-validator';
-import { TransformToArray } from './transform-to-array.decorator';
-import { ValidationOptions } from './type';
+import { TransformToArray } from './transform-to-array.decorator.js';
+import type { ValidationOptions } from './type.js';
 
 /**
  * Property decorator to validate and transform a field in an String.

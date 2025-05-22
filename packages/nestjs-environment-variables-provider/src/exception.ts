@@ -1,4 +1,4 @@
-import { ConflictException, ValidationError } from "@nestjs/common";
+import { ConflictException, type ValidationError } from "@nestjs/common";
 
 /**
  * Exception to be thrown when environment variables read do not respect the specified contract.

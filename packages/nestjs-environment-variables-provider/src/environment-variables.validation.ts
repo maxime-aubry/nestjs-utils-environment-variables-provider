@@ -1,7 +1,7 @@
-import { ClassConstructor } from 'class-transformer';
+import type { ClassConstructor } from 'class-transformer';
 import { validateSync, ValidationError } from 'class-validator';
-import { InvalidEnvironmentVariablesException } from './exception';
-import { parse } from './parser';
+import { InvalidEnvironmentVariablesException } from './exception.js';
+import { parse } from './parser.js';
 
 export function validate<TCollectionOfEnvironmentVariables extends object>(
   envClass: ClassConstructor<TCollectionOfEnvironmentVariables>,

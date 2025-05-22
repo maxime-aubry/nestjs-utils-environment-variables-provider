@@ -1,7 +1,7 @@
 import { Expose, Transform } from 'class-transformer';
-import { isBoolean, isBooleanString, registerDecorator, ValidationArguments } from 'class-validator';
-import { SEPARATOR } from '../utils';
-import { ValidationOptions } from './type';
+import { isBoolean, isBooleanString, registerDecorator, type ValidationArguments } from 'class-validator';
+import { SEPARATOR } from '../utils/index.js';
+import type { ValidationOptions } from './type.js';
 
 /**
  * Property decorator to validate and transform a field in a Boolean or array of Booleans.

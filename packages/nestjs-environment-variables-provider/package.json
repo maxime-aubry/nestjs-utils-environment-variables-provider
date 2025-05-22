@@ -3,28 +3,29 @@
   "version": "1.0.0",
   "description": "Environment variables provider for Nest.JS project",
   "type": "module",
-  "main": "./dist/main.js",
+  "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "source": "./src/index.ts",
   "types": "./dist/cjs/index.d.ts",
   "exports": {
-    ".": "./dist/main.js",
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
     "./*": "./*"
   },
   "scripts": {
-    "build": "npm run build-js && npm run copy-styles",
-    "build-js": "npm run build-js-esm && npm run build-js-cjs && npm run build-js-cjs-package",
+    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
+    "build": "npm run clean && npm run build-js",
+    "build-js": "npm run build-js-esm && npm run build-js-cjs",
     "build-js-esm": "tsc --project tsconfig.build.json --outDir dist/esm",
     "build-js-cjs": "tsc --project tsconfig.build.json --outDir dist/cjs --module commonjs --moduleResolution node --verbatimModuleSyntax false",
-    "build-js-cjs-package": "echo '{\n  \"type\": \"commonjs\"\n}' > dist/cjs/package.json",
-    "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
-    "copy-styles": "cpy 'src/**/*.css' dist/esm && cpy 'src/**/*.css' dist/cjs",
     "format": "biome format",
     "lint": "biome lint",
-    "prepack": "npm run clean && npm run build",
+    "prepack": "npm run build",
     "test": "npm run lint && npm run tsc && npm run format && npm run unit",
     "tsc": "tsc",
-    "watch": "npm run build-js-esm -- --watch & npm run build-js-cjs -- --watch & node -e \"fs.watch('src', () => require('child_process').exec('npm run copy-styles'))\"",
+    "watch": "npm run build-js-main -- --watch & npm run build-js-esm -- --watch & npm run build-js-cjs -- --watch",
     "docs": "typedoc"
   },
   "keywords": [
@@ -45,12 +46,12 @@
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.0",
     "class-transformer": "^0.5.1",
-    "class-validator": "^0.14.2"
+    "class-validator": "^0.14.2",
+    "cpy-cli": "^5.0.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
     "@nestjs/testing": "^11.1.0",
-    "@types/jest": "^29.5.14",
     "@types/node": "^22.15.3",
     "dotenv-cli": "^8.0.0",
     "ts-node": "^10.9.2",

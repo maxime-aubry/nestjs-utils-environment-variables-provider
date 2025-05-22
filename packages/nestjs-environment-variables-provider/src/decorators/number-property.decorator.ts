@@ -1,7 +1,7 @@
 import { Expose, Transform } from 'class-transformer';
 import { IsNumber } from 'class-validator';
-import { SEPARATOR } from '../utils';
-import { ValidationOptions } from './type';
+import { SEPARATOR } from '../utils/index.js';
+import type { ValidationOptions } from './type.js';
 
 /**
  * Options to be passed to the NumberProperty decorator.

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { ClassConstructor } from 'class-transformer';
-import { parse } from './parser';
+import type { ClassConstructor } from 'class-transformer';
+import { parse } from './parser.js';
 
 /**
  * Provider of validated environment variables.

@@ -1,8 +1,8 @@
-import { DynamicModule, Module } from '@nestjs/common';
+import { type DynamicModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { ClassConstructor } from 'class-transformer';
-import { EnvironmentVariablesProvider } from './environment-variables.provider';
-import { validate } from './environment-variables.validation';
+import type { ClassConstructor } from 'class-transformer';
+import { EnvironmentVariablesProvider } from './environment-variables.provider.js';
+import { validate } from './environment-variables.validation.js';
 
 /**
  * Environment configuration module.

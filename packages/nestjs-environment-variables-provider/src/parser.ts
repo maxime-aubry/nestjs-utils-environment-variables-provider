@@ -1,4 +1,4 @@
-import { ClassConstructor, plainToInstance } from "class-transformer";
+import { type ClassConstructor, plainToInstance } from "class-transformer";
 
 export function parse<TCollectionOfEnvironmentVariables extends object>(
     envClass: ClassConstructor<TCollectionOfEnvironmentVariables>,

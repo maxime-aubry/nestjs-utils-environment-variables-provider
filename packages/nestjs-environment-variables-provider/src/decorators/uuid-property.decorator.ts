@@ -1,7 +1,7 @@
 import { Expose } from "class-transformer";
 import { IsUUID } from "class-validator";
-import { TransformToArray } from "./transform-to-array.decorator";
-import { ValidationOptions } from "./type";
+import { TransformToArray } from "./transform-to-array.decorator.js";
+import type { ValidationOptions } from "./type.js";
 
 /**
  * UUID version to be passed to UUIDProperty decorator.

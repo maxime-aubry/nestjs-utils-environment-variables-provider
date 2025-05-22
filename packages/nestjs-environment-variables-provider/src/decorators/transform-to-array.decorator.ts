@@ -1,5 +1,5 @@
 import { Transform } from "class-transformer";
-import { SEPARATOR } from "../utils";
+import { SEPARATOR } from "../utils/index.js";
 
 export function TransformToArray(): PropertyDecorator {
   return Transform(({ value }) => {
