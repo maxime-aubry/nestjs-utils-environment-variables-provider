@@ -11,12 +11,12 @@ export interface ICollectionOfEnvironmentVariables<TValue> {
 	readonly TEST: TValue;
 }
 
-export function setEnvironmentVariables(value: string): void {
-	process.env.TEST = value;
+export function setEnvironmentVariable<TValue>(name: string, value: TValue): void {
+	process.env[name] = value;
 }
 
-export function clearEnvironmentVariables(): void {
-	process.env.TEST = undefined;
+export function clearEnvironmentVariable(name: string): void {
+	process.env[name] = undefined;
 }
 
 export async function expectValueAsync<

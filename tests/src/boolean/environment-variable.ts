@@ -5,5 +5,8 @@ export class EnvironmentVariables
 	implements ICollectionOfEnvironmentVariables<boolean>
 {
 	@BooleanProperty()
-	public readonly TEST!: boolean;
+	public readonly SINGLE_BOOLEAN!: boolean;
+
+	@BooleanProperty({ each: true })
+	public readonly MULTIPLE_BOOLEANS!: boolean[];
 }
