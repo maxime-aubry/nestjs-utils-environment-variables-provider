@@ -1,14 +1,9 @@
-import { defineConfig } from 'vitest/config';
-// import path from 'path';
+import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  test: {
-    include: ['**/*.test.ts'],
-    globals: true,
-  },
-  // resolve: {
-  //   alias: {
-  //     'nestjs-environment-variables-provider': path.resolve(__dirname, '../packages/environment-variables-provider/src'),
-  //   },
-  // },
-})
+	test: {
+		globals: true,
+		environment: "node",
+		include: ["**/*.spec.ts"],
+	},
+});

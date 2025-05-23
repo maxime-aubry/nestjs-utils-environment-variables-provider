@@ -1,9 +1,9 @@
-import { StringProperty } from "nestjs-environment-variables-provider/decorators";
+import { UUIDProperty } from "nestjs-environment-variables-provider/decorators";
 import type { ICollectionOfEnvironmentVariables } from "../test.utils.js";
 
 export class EnvironmentVariables
 	implements ICollectionOfEnvironmentVariables<string>
 {
-	@StringProperty()
+	@UUIDProperty("4")
 	public readonly TEST!: string;
 }

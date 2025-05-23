@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": []
+		"ignore": ["dist"]
 	},
 	"formatter": {
 		"enabled": true,
@@ -137,7 +137,7 @@
 			},
 			"performance": {
 				"noAccumulatingSpread": "error",
-				"noBarrelFile": "error"
+				"noBarrelFile": "off"
 			},
 			"style": {
 				"noArguments": "error",
@@ -157,7 +157,7 @@
 				"noVar": "error",
 				"noYodaExpression": "error",
 				"useAsConstAssertion": "error",
-				"useBlockStatements": "error",
+				"useBlockStatements": "off",
 				"useCollapsedElseIf": "error",
 				"useConsistentArrayType": "error",
 				"useConsistentBuiltinInstantiation": "error",

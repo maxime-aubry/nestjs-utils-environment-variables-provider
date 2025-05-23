@@ -1,21 +1,22 @@
-import { Expose } from 'class-transformer';
-import { IsString } from 'class-validator';
-import { TransformToArray } from './transform-to-array.decorator.js';
-import type { ValidationOptions } from './type.js';
+import { Expose } from "class-transformer";
+import { IsString } from "class-validator";
+import { TransformToArray } from "./transform-to-array.decorator.js";
+import type { ValidationOptions } from "./type.js";
 
 /**
  * Property decorator to validate and transform a field in an String.
- * 
+ *
  * - Uses `class-transform` to transform the value.
  * - Uses `class-validator` to validate the value is an String.
- * 
+ *
  * @param validationOptions Validation options (e.g. `each` for collections).
  */
-export function StringProperty(validationOptions?: ValidationOptions): PropertyDecorator {
-  return function (target: Object, propertyKey: string | symbol) {
-    if (validationOptions?.each)
-      TransformToArray()(target, propertyKey);
-    IsString(validationOptions)(target, propertyKey);
-    Expose()(target, propertyKey);
-  };
-};
+export function StringProperty(
+	validationOptions?: ValidationOptions,
+): PropertyDecorator {
+	return function (target: object, propertyKey: string | symbol): void {
+		if (validationOptions?.each) TransformToArray()(target, propertyKey);
+		IsString(validationOptions)(target, propertyKey);
+		Expose()(target, propertyKey);
+	};
+}

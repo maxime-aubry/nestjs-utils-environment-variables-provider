@@ -12,7 +12,10 @@
       "import": "./dist/esm/index.js",
       "require": "./dist/cjs/index.js"
     },
-    "./*": "./*"
+    "./decorators": {
+      "import": "./dist/esm/decorators/index.js",
+      "require": "./dist/cjs/decorators/index.js"
+    }
   },
   "scripts": {
     "clean": "node -e \"fs.rmSync('./dist', { recursive: true, force: true })\"",
@@ -20,10 +23,11 @@
     "build-js": "npm run build-js-esm && npm run build-js-cjs",
     "build-js-esm": "tsc --project tsconfig.build.json --outDir dist/esm",
     "build-js-cjs": "tsc --project tsconfig.build.json --outDir dist/cjs --module commonjs --moduleResolution node --verbatimModuleSyntax false",
-    "format": "biome format",
-    "lint": "biome lint",
+    "format": "biome format ./src --write",
+    "lint": "biome lint ./src",
     "prepack": "npm run build",
-    "test": "npm run lint && npm run tsc && npm run format && npm run unit",
+    "clean-code": "npm run lint && npm run tsc && npm run format",
+    "test": "echo \"No tests\"",
     "tsc": "tsc",
     "watch": "npm run build-js-main -- --watch & npm run build-js-esm -- --watch & npm run build-js-cjs -- --watch",
     "docs": "typedoc"

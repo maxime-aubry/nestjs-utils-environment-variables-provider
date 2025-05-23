@@ -6,11 +6,11 @@ import {
 } from "../test.utils.js";
 import { EnvironmentVariables } from "./environment-variable.js";
 
-describe("Tests string.", () => {
+describe("Tests number.", () => {
 	afterEach(() => clearEnvironmentVariables());
 
-	it("Environment variable 'TEST' equals to 'azerty'.", async () => {
-		setEnvironmentVariables("azerty");
-		await expectValueAsync(EnvironmentVariables, "azerty");
+	it("Environment variable 'TEST' equals to 1.", async () => {
+		setEnvironmentVariables("1");
+		await expectValueAsync(EnvironmentVariables, 1);
 	});
 });

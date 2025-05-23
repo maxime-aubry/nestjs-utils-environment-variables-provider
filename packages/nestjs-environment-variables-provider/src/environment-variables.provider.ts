@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import type { ClassConstructor } from 'class-transformer';
-import { parse } from './parser.js';
+import { Injectable } from "@nestjs/common";
+import type { ClassConstructor } from "class-transformer";
+import { parse } from "./parser.js";
 
 /**
  * Provider of validated environment variables.
@@ -9,16 +9,19 @@ import { parse } from './parser.js';
  */
 @Injectable()
 export class EnvironmentVariablesProvider {
-    /**
-     * Returns an instance containing mapped and validated environment variables.
-     * 
-     * @param envClass The class used to type and validate environment variables.
-     * @returns Typed environment variables.
-     */
-    public getEnvironmentVariables<TCollectionOfEnvironmentVariables extends object>(
-        envClass: ClassConstructor<TCollectionOfEnvironmentVariables>
-    ): TCollectionOfEnvironmentVariables {
-        const variables: TCollectionOfEnvironmentVariables = parse<TCollectionOfEnvironmentVariables>(envClass, process.env);
-        return variables;
-    }
+	/**
+	 * Returns an instance containing mapped and validated environment variables.
+	 *
+	 * @param envClass The class used to type and validate environment variables.
+	 * @returns Typed environment variables.
+	 */
+	public getEnvironmentVariables<
+		TCollectionOfEnvironmentVariables extends object,
+	>(
+		envClass: ClassConstructor<TCollectionOfEnvironmentVariables>,
+	): TCollectionOfEnvironmentVariables {
+		const variables: TCollectionOfEnvironmentVariables =
+			parse<TCollectionOfEnvironmentVariables>(envClass, process.env);
+		return variables;
+	}
 }

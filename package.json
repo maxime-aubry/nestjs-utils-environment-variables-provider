@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "nestjs-environment-variables-provider monorepo",
   "type": "module",
-  "repository": "git@github.com:maxime-aubry/nestjs-utils-environment-variables-provider.git",
   "workspaces": [
     "packages/*",
     "tests"
@@ -11,9 +10,8 @@
   "scripts": {
     "build": "npm run workspace nestjs-environment-variables-provider build",
     "dev": "npm run workspace nestjs-environment-variables-provider watch & npm run workspace test dev",
-    "format": "npm run workspaces foreach --all run format",
-    "lint": "npm run workspaces foreach --all run lint",
-    "test": "npm run workspaces foreach --all run test",
+    "clean-code": "npm run clean-code --workspaces",
+    "test": "npm run test -w tests",
     "tsc": "npm run workspaces foreach --all run tsc",
     "unit": "npm run workspaces foreach --all run unit"
   }

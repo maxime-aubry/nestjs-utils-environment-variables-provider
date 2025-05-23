@@ -1,1 +1,1 @@
-export const SEPARATOR: string = ',';
+export const SEPARATOR: string = ",";
