@@ -1,21 +1,42 @@
-import { afterEach, describe, it } from "vitest";
+import { describe, it } from "vitest";
 import {
-	clearEnvironmentVariables,
+	expectExceptionAsync,
 	expectValueAsync,
-	setEnvironmentVariables,
+	setEnvironmentVariable,
 } from "../test.utils.js";
-import { EnvironmentVariables } from "./environment-variable.js";
+import {
+	EnvironmentVariablesWithMultipleValues,
+	EnvironmentVariablesWithSingleValue,
+} from "./models.js";
 
 describe("Tests URL.", () => {
-	afterEach(() => clearEnvironmentVariables());
-
-	it("Environment variable 'TEST' equals to 'https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider'.", async () => {
-		setEnvironmentVariables(
+	it("Environment variable 'VALUE' equals to 'https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider'.", async () => {
+		setEnvironmentVariable(
 			"https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider",
 		);
 		await expectValueAsync(
-			EnvironmentVariables,
+			EnvironmentVariablesWithSingleValue,
 			"https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider",
 		);
+	});
+
+	it("Environment variables throw exception with wrong value 'a'.", async () => {
+		setEnvironmentVariable("a");
+		await expectExceptionAsync(EnvironmentVariablesWithSingleValue);
+	});
+
+	it("Environment variable 'VALUE' equals to ['https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider','https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider/tree/develop'].", async () => {
+		setEnvironmentVariable(
+			"https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider,https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider/tree/develop",
+		);
+		await expectValueAsync(EnvironmentVariablesWithMultipleValues, [
+			"https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider",
+			"https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider/tree/develop",
+		]);
+	});
+
+	it("Environment variables throw exception with wrong values ['a', 'b'].", async () => {
+		setEnvironmentVariable("a,b");
+		await expectExceptionAsync(EnvironmentVariablesWithMultipleValues);
 	});
 });

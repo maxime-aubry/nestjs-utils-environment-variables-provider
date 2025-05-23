@@ -7,21 +7,20 @@ import {
 } from "nestjs-environment-variables-provider";
 import { expect } from "vitest";
 
-export interface ICollectionOfEnvironmentVariables<TValue> {
-	readonly TEST: TValue;
+export interface IEnvironmentVariables<TValue> {
+	readonly VALUE: TValue;
 }
 
-export function setEnvironmentVariable<TValue>(name: string, value: TValue): void {
-	process.env[name] = value;
+export function setEnvironmentVariable<TValue>(value: TValue): void {
+	process.env.VALUE = `${value}`;
 }
 
-export function clearEnvironmentVariable(name: string): void {
-	process.env[name] = undefined;
+export function clearEnvironmentVariable(): void {
+	process.env.VALUE = undefined;
 }
 
 export async function expectValueAsync<
-	TCollectionOfEnvironmentVariables extends
-		ICollectionOfEnvironmentVariables<unknown>,
+	TCollectionOfEnvironmentVariables extends IEnvironmentVariables<unknown>,
 	TValue = unknown,
 >(
 	envClass: ClassConstructor<TCollectionOfEnvironmentVariables>,
@@ -39,7 +38,7 @@ export async function expectValueAsync<
 		environmentVariablesProvider.getEnvironmentVariables(envClass);
 
 	expect(variables).toBeInstanceOf(envClass);
-	expect(variables.TEST).toEqual(value);
+	expect(variables.VALUE).toEqual(value);
 }
 
 export async function expectExceptionAsync<

@@ -1,16 +1,21 @@
-import { afterEach, describe, it } from "vitest";
+import { describe, it } from "vitest";
+import { expectValueAsync, setEnvironmentVariable } from "../test.utils.js";
 import {
-	clearEnvironmentVariables,
-	expectValueAsync,
-	setEnvironmentVariables,
-} from "../test.utils.js";
-import { EnvironmentVariables } from "./environment-variable.js";
+	EnvironmentVariablesWithMultipleValues,
+	EnvironmentVariablesWithSingleValue,
+} from "./models.js";
 
 describe("Tests string.", () => {
-	afterEach(() => clearEnvironmentVariables());
+	it("Environment variable 'VALUE' equals to 'azerty'.", async () => {
+		setEnvironmentVariable("azerty");
+		await expectValueAsync(EnvironmentVariablesWithSingleValue, "azerty");
+	});
 
-	it("Environment variable 'TEST' equals to 'azerty'.", async () => {
-		setEnvironmentVariables("azerty");
-		await expectValueAsync(EnvironmentVariables, "azerty");
+	it("Environment variable 'VALUE' equals to ['azerty','qwerty'].", async () => {
+		setEnvironmentVariable("azerty,qwerty");
+		await expectValueAsync(EnvironmentVariablesWithMultipleValues, [
+			"azerty",
+			"qwerty",
+		]);
 	});
 });

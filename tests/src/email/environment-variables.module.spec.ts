@@ -1,16 +1,38 @@
-import { afterEach, describe, it } from "vitest";
+import { describe, it } from "vitest";
 import {
-	clearEnvironmentVariables,
+	expectExceptionAsync,
 	expectValueAsync,
-	setEnvironmentVariables,
+	setEnvironmentVariable,
 } from "../test.utils.js";
-import { EnvironmentVariables } from "./environment-variable.js";
+import {
+	EnvironmentVariablesWithMultipleValues,
+	EnvironmentVariablesWithSingleValue,
+} from "./models.js";
 
 describe("Tests email.", () => {
-	afterEach(() => clearEnvironmentVariables());
+	it("Environment variable 'VALUE' equals to 'a.a@domain.com'.", async () => {
+		setEnvironmentVariable("a.a@domain.com");
+		await expectValueAsync(
+			EnvironmentVariablesWithSingleValue,
+			"a.a@domain.com",
+		);
+	});
 
-	it("Environment variable 'TEST' equals to 'a.a@domain.fr'.", async () => {
-		setEnvironmentVariables("a.a@domain.fr");
-		await expectValueAsync(EnvironmentVariables, "a.a@domain.fr");
+	it("Environment variables throw exception with wrong value 'a'.", async () => {
+		setEnvironmentVariable("a");
+		await expectExceptionAsync(EnvironmentVariablesWithSingleValue);
+	});
+
+	it("Environment variable 'VALUE' equals to ['a.a@domain.com','b.b@domain.com'].", async () => {
+		setEnvironmentVariable("a.a@domain.com,b.b@domain.com");
+		await expectValueAsync(EnvironmentVariablesWithMultipleValues, [
+			"a.a@domain.com",
+			"b.b@domain.com",
+		]);
+	});
+
+	it("Environment variables throw exception with wrong values ['a', 'b'].", async () => {
+		setEnvironmentVariable("a,b");
+		await expectExceptionAsync(EnvironmentVariablesWithMultipleValues);
 	});
 });

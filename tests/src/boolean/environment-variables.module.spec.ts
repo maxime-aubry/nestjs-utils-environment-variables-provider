@@ -1,73 +1,58 @@
-import { afterEach, beforeAll, describe, it } from "vitest";
+import { describe, it } from "vitest";
 import {
-	clearEnvironmentVariable,
 	expectExceptionAsync,
 	expectValueAsync,
 	setEnvironmentVariable,
 } from "../test.utils.js";
-import { EnvironmentVariables } from "./environment-variable.js";
+import {
+	EnvironmentVariablesWithMultipleValues,
+	EnvironmentVariablesWithSingleValue,
+} from "./models.js";
 
 describe("Tests boolean.", () => {
-	beforeAll(() => clearEnvironmentVariables());
-	afterEach(() => clearEnvironmentVariables());
-
-	it("'true' boolean string values are valid.", async () => {
-		setEnvironmentVariable("SINGLE_BOOLEAN", "true");
-		setEnvironmentVariable("MULTIPLE_BOOLEANS", ["true", "true"]);
-		const env: EnvironmentVariables = new EnvironmentVariables();
-		env.SINGLE_BOOLEAN = true;
-		env.MULTIPLE_BOOLEANS = [true, true];
-		await expectValueAsync(EnvironmentVariables, true);
+	it("Environment variable 'VALUE' equals to 'true'.", async () => {
+		setEnvironmentVariable("true");
+		await expectValueAsync(EnvironmentVariablesWithSingleValue, true);
 	});
 
-	it("'True' boolean string values are valid.", async () => {
-		setEnvironmentVariable("SINGLE_BOOLEAN", "True");
-		setEnvironmentVariable("MULTIPLE_BOOLEANS", ["True", "True"]);
-		env.SINGLE_BOOLEAN = true;
-		env.MULTIPLE_BOOLEANS = [true, true];
-		await expectValueAsync(EnvironmentVariables, true);
+	it("Environment variable 'VALUE' equals to 'True'.", async () => {
+		setEnvironmentVariable("True");
+		await expectValueAsync(EnvironmentVariablesWithSingleValue, true);
 	});
 
-	it("'false' boolean string values are valid.", async () => {
-		setEnvironmentVariable("SINGLE_BOOLEAN", "false");
-		setEnvironmentVariable("MULTIPLE_BOOLEANS", ["false", "false"]);
-		env.SINGLE_BOOLEAN = false;
-		env.MULTIPLE_BOOLEANS = [false, false];
-		await expectValueAsync(EnvironmentVariables, false);
+	it("Environment variable 'VALUE' equals to 'false'.", async () => {
+		setEnvironmentVariable("false");
+		await expectValueAsync(EnvironmentVariablesWithSingleValue, false);
 	});
 
-	it("'False' boolean string values are valid.", async () => {
-		setEnvironmentVariable("SINGLE_BOOLEAN", "False");
-		setEnvironmentVariable("MULTIPLE_BOOLEANS", ["False", "False"]);
-		env.SINGLE_BOOLEAN = false;
-		env.MULTIPLE_BOOLEANS = [false, false];
-		await expectValueAsync(EnvironmentVariables, false);
+	it("Environment variable 'VALUE' equals to 'False'.", async () => {
+		setEnvironmentVariable("False");
+		await expectValueAsync(EnvironmentVariablesWithSingleValue, false);
 	});
 
-	it("'true' and 'false' boolean string values are valid.", async () => {
-		setEnvironmentVariable("SINGLE_BOOLEAN", "false");
-		setEnvironmentVariable("MULTIPLE_BOOLEANS", ["true", "false"]);
-		env.SINGLE_BOOLEAN = false;
-		env.MULTIPLE_BOOLEANS = [true, false];
-		await expectValueAsync(EnvironmentVariables, false);
+	it("Environment variables throw exception with wrong value 'a'.", async () => {
+		setEnvironmentVariable("a");
+		await expectExceptionAsync(EnvironmentVariablesWithSingleValue);
 	});
 
-	it("'True' and 'False' boolean string values are valid.", async () => {
-		setEnvironmentVariable("SINGLE_BOOLEAN", "False");
-		setEnvironmentVariable("MULTIPLE_BOOLEANS", ["True", "False"]);
-		env.SINGLE_BOOLEAN = false;
-		env.MULTIPLE_BOOLEANS = [true, false];
-		await expectValueAsync(EnvironmentVariables, false);
+	it("Environment variable 'VALUE' equals to ['true','false'].", async () => {
+		setEnvironmentVariable("true,false");
+		await expectValueAsync(EnvironmentVariablesWithMultipleValues, [
+			true,
+			false,
+		]);
 	});
 
-	it("Environment variables throw execeptions with wrong values 'wrong value'.", async () => {
-		setEnvironmentVariable("SINGLE_BOOLEAN", "wrong value");
-		setEnvironmentVariable("MULTIPLE_BOOLEANS", ["wrong value", "wrong value"]);
-		await expectExceptionAsync(EnvironmentVariables);
+	it("Environment variable 'VALUE' equals to ['True','False'].", async () => {
+		setEnvironmentVariable("True,False");
+		await expectValueAsync(EnvironmentVariablesWithMultipleValues, [
+			true,
+			false,
+		]);
+	});
+
+	it("Environment variables throw exception with wrong values ['a', 'b'].", async () => {
+		setEnvironmentVariable("a,b");
+		await expectExceptionAsync(EnvironmentVariablesWithSingleValue);
 	});
 });
-
-function clearEnvironmentVariables(): void {
-	clearEnvironmentVariable("SINGLE_BOOLEAN");
-	clearEnvironmentVariable("MULTIPLE_BOOLEANS");
-};
