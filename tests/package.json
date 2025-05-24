@@ -12,10 +12,10 @@
 		"clean-code": "npm run lint && npm run format",
 		"test": "vitest"
 	},
+	"dependencies": {
+		"nestjs-environment-variables-provider": "*"
+	},
 	"devDependencies": {
 		"vitest": "^3.1.4"
-	},
-	"dependencies": {
-		"nestjs-environment-variables-provider": "file:../packages/nestjs-environment-variables-provider"
 	}
 }

@@ -13,7 +13,7 @@ export class EnvironmentVariables {
     public readonly DATABASE_URL!: string;
 
     @EmailProperty()
-    public readony ADMIN_EMAIL!: string;
+    public readonly ADMIN_EMAIL!: string;
 }
 ```
 

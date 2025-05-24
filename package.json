@@ -4,6 +4,7 @@
   "description": "nestjs-environment-variables-provider monorepo",
   "type": "module",
   "workspaces": [
+    "demo",
     "packages/*",
     "tests"
   ],
