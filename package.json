@@ -9,11 +9,9 @@
     "tests"
   ],
   "scripts": {
-    "build": "npm run workspace nestjs-environment-variables-provider build",
-    "dev": "npm run workspace nestjs-environment-variables-provider watch & npm run workspace test dev",
+    "build": "npm run build -w nestjs-environment-variables-provider",
     "clean-code": "npm run clean-code --workspaces",
     "test": "npm run test -w tests",
-    "tsc": "npm run workspaces foreach --all run tsc",
-    "unit": "npm run workspaces foreach --all run unit"
+    "docs": "npm run docs -w nestjs-environment-variables-provider"
   }
 }

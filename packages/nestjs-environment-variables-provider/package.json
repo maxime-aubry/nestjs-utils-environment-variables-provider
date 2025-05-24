@@ -25,9 +25,7 @@
     "build-js-cjs": "tsc --project tsconfig.build.json --outDir dist/cjs --module commonjs --moduleResolution node --verbatimModuleSyntax false",
     "format": "biome format ./src --write",
     "lint": "biome lint ./src",
-    "prepack": "npm run build",
     "clean-code": "npm run lint && npm run tsc && npm run format",
-    "test": "echo \"No tests\"",
     "tsc": "tsc",
     "watch": "npm run build-js-main -- --watch & npm run build-js-esm -- --watch & npm run build-js-cjs -- --watch",
     "docs": "typedoc"

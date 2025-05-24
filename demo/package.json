@@ -6,8 +6,9 @@
 	"scripts": {
 		"start": "dotenv -e .env -- nest start",
 		"start:debug": "dotenv -e .env -- nest start --debug --watch",
-		"clean-code": "echo \"No clean code\"",
-		"test": "echo \"No tests\""
+		"format": "biome format ./src --write",
+		"lint": "biome lint ./src",
+		"clean-code": "npm run lint && npm run format"
 	},
 	"dependencies": {
 		"@nestjs/common": "^11.0.1",
