@@ -1,0 +1,1 @@
+npm run clean-code --staged --no-errors-on-unmatched --write

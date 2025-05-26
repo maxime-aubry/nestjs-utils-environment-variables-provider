@@ -10,8 +10,12 @@
   ],
   "scripts": {
     "build": "npm run build -w nestjs-environment-variables-provider",
+    "format": "npm run format -w nestjs-environment-variables-provider",
     "clean-code": "npm run clean-code --workspaces",
     "test": "npm run test -w tests",
     "docs": "npm run docs -w nestjs-environment-variables-provider"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
   }
 }
