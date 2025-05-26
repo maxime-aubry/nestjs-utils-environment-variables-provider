@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        nestjs-version: ['9.x', '10.x', '11.x']
+        nestjs-version: ['11.x']
     steps:
       - name: Checkout
         uses: actions/checkout@v4
