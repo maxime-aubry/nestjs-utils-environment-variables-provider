@@ -11,6 +11,7 @@
   "scripts": {
     "build": "npm run build -w @nestjs-utils/environment-variables-provider",
     "format": "npm run format -w @nestjs-utils/environment-variables-provider",
+    "lint": "npm run lint -w @nestjs-utils/environment-variables-provider",
     "clean-code": "npm run clean-code --workspaces",
     "test": "npm run test -w tests",
     "docs": "npm run docs -w @nestjs-utils/environment-variables-provider",
