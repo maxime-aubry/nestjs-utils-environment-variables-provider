@@ -1,4 +1,4 @@
-import { BooleanProperty } from "@nestjs-utils/environment-variables-provider/decorators";
+import { BooleanProperty } from "@otakusan76/nestjs-environment-variables-provider/decorators";
 import type { IEnvironmentVariables } from "../test.utils.js";
 
 export class EnvironmentVariablesWithSingleValue

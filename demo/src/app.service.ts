@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { EnvironmentVariablesProvider } from '@nestjs-utils/environment-variables-provider';
+import { EnvironmentVariablesProvider } from '@otakusan76/nestjs-environment-variables-provider';
 import { EnvironmentVariables } from './environement-variables.js';
 
 @Injectable()

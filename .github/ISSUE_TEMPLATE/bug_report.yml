@@ -7,7 +7,7 @@ body:
     attributes:
       label: Before you start - checklist
       options:
-        - label: I followed instructions in documentation written for my @nestjs-utils/environment-variables-provider version
+        - label: I followed instructions in documentation written for my @otakusan76/nestjs-environment-variables-provider version
           required: true
         - label: I have checked if this bug is not already reported
           required: true
@@ -64,8 +64,8 @@ body:
       label: Environment
       description: |
         Example:
-          - **@nestjs-utils/environment-variables-provider version**: 1.0.0
+          - **@otakusan76/nestjs-environment-variables-provider version**: 1.0.0
           - **NestJS version**: 18.2.0
       value: |
-          - **@nestjs-utils/environment-variables-provider version**:
+          - **@otakusan76/nestjs-environment-variables-provider version**:
           - **NestJS version**:
