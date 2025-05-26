@@ -1,4 +1,4 @@
-# @nestjs-utils/environment-variables-provider
+# @otakusan76/nestjs-environment-variables-provider
 Environment variables provider for Nest.JS project.
 
 This library enables you to get a collection of environment variable as a class and validate model using by a class validation way.
@@ -7,7 +7,7 @@ This library enables you to get a collection of environment variable as a class 
 Define a class model to store your environment variables :
 
 ``` Typescript
-import { EmailProperty, StringProperty } from '@nestjs-utils/environment-variables-provider';
+import { EmailProperty, StringProperty } from '@otakusan76/nestjs-environment-variables-provider';
 
 export class EnvironmentVariables {
     @StringProperty()
@@ -22,7 +22,7 @@ Define your module and register the "EnvironmentConfigModule" module :
 
 ``` Typescript
 import { Module } from '@nestjs/common';
-import { EnvironmentConfigModule } from '@nestjs-utils/environment-variables-provider';
+import { EnvironmentConfigModule } from '@otakusan76/nestjs-environment-variables-provider';
 import { EnvironmentVariables } from './environment-variables.ts
 
 @Module({
@@ -35,7 +35,7 @@ Call the environment variable provider in your custom code:
 
 ``` Typescript
 import { Inject, Injectable } from '@nestjs/common';
-import { EnvironmentVariablesProvider } from '@nestjs-utils/environment-variables-provider';
+import { EnvironmentVariablesProvider } from '@otakusan76/nestjs-environment-variables-provider';
 import { EnvironmentVariables } from './environement-variables.js';
 
 @Injectable()
@@ -79,7 +79,7 @@ export class CustomService {
 
 ## Documentation
 
-- [@nestjs-utils/environment-variables-provider Documentation](https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider/docs)
+- [@otakusan76/nestjs-environment-variables-provider Documentation](https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider/docs)
 
 ## License
 

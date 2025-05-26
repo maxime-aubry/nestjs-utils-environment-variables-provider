@@ -12,7 +12,7 @@
 		"test": "vitest"
 	},
 	"dependencies": {
-		"@nestjs-utils/environment-variables-provider": "*"
+		"@otakusan76/nestjs-environment-variables-provider": "*"
 	},
 	"devDependencies": {
 		"vitest": "^3.1.4"

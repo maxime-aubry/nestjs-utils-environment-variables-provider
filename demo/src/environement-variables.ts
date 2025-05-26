@@ -1,4 +1,4 @@
-import { EmailProperty, NumberProperty, StringProperty, UrlProperty, UUIDProperty } from '@nestjs-utils/environment-variables-provider/decorators';
+import { EmailProperty, NumberProperty, StringProperty, UrlProperty, UUIDProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
 
 export class EnvironmentVariables {
     @StringProperty()
