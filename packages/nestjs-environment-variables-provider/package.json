@@ -69,7 +69,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/maxime-aubry/nestjs-env-var-provider.git",
-    "directory": "packages/environment-variables-provider"
+    "url": "git+https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider.git",
+    "directory": "packages/nestjs-environment-variables-provider"
   }
 }
