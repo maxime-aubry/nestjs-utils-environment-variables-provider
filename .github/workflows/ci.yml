@@ -21,7 +21,7 @@ jobs:
         uses: biomejs/setup-biome@v2
 
       - name: Lint the code
-        run: biome lint
+        run: biome lint ./packages/nestjs-environment-variables-provider
   
   format:
     name: Code formatting
@@ -35,7 +35,7 @@ jobs:
         uses: biomejs/setup-biome@v2
 
       - name: Run formatting
-        run: biome format
+        run: biome format ./packages/nestjs-environment-variables-provider --write
 
   test:
     name: Run tests
