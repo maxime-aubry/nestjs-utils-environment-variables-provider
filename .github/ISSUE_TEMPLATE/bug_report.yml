@@ -1,0 +1,71 @@
+name: 🐛 Bug report
+description: Import of environment variables does not work
+labels:
+  - bug
+body:
+  - type: checkboxes
+    attributes:
+      label: Before you start - checklist
+      options:
+        - label: I followed instructions in documentation written for my @nestjs-utils/environment-variables-provider version
+          required: true
+        - label: I have checked if this bug is not already reported
+          required: true
+
+  - type: textarea
+    attributes:
+      label: module
+      description: Share your module in which you import the provider
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: .env file
+      description: Share your .env file here
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: usage of EnvironmentVariablesProvider service
+      description: Share your code where you call the EnvironmentVariablesProvider service
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: custom validation attributes
+      description: Share your custom validation attributes here
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Expected behavior
+      description: What is the expected behavior?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Actual behavior
+      description: What is the actual behavior?
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Additional information
+      description: If applicable, add screenshots (preferably with browser console open) and files you have an issue with to help explain your problem.
+
+  - type: textarea
+    attributes:
+      label: Environment
+      description: |
+        Example:
+          - **@nestjs-utils/environment-variables-provider version**: 1.0.0
+          - **NestJS version**: 18.2.0
+      value: |
+          - **@nestjs-utils/environment-variables-provider version**:
+          - **NestJS version**:

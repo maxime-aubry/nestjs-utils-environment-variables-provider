@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"target": "ESNext",
+		"strict": true,
+		"noEmit": true,
+		"isolatedModules": true,
+		"types": ["vitest"],
+		"moduleDetection": "auto",
+		"verbatimModuleSyntax": true,
+		"skipLibCheck": true
+	},
+	"include": ["**/*.ts"]
+}

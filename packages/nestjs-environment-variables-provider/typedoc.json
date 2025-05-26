@@ -1,0 +1,13 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "src/index.ts",
+    "src/decorators/index.ts",
+  ],
+  "tsconfig": "tsconfig.json",
+  "out": "../../docs",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "includeVersion": true,
+  "readme": "../../README.md"
+}

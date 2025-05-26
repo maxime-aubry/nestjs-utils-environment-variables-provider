@@ -1,0 +1,22 @@
+{
+  "name": "nestjs-environment-variables-provider-monorepo",
+  "version": "1.0.0",
+  "description": "nestjs-environment-variables-provider monorepo",
+  "type": "module",
+  "workspaces": [
+    "demo",
+    "packages/*",
+    "tests"
+  ],
+  "scripts": {
+    "build": "npm run build -w @nestjs-utils/environment-variables-provider",
+    "format": "npm run format -w @nestjs-utils/environment-variables-provider",
+    "clean-code": "npm run clean-code --workspaces",
+    "test": "npm run test -w tests",
+    "docs": "npm run docs -w @nestjs-utils/environment-variables-provider",
+    "postinstall": "husky"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7"
+  }
+}

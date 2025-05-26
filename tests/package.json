@@ -1,0 +1,20 @@
+{
+	"name": "nestjs-environment-variables-provider-tests",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "vite build",
+		"dev": "vite",
+		"format": "biome format ./src --write",
+		"lint": "biome lint ./src",
+		"clean-code": "npm run lint && npm run format",
+		"test": "vitest"
+	},
+	"dependencies": {
+		"@nestjs-utils/environment-variables-provider": "*"
+	},
+	"devDependencies": {
+		"vitest": "^3.1.4"
+	}
+}
