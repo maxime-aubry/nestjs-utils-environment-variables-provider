@@ -13,7 +13,8 @@
     "format": "npm run format -w @nestjs-utils/environment-variables-provider",
     "clean-code": "npm run clean-code --workspaces",
     "test": "npm run test -w tests",
-    "docs": "npm run docs -w @nestjs-utils/environment-variables-provider"
+    "docs": "npm run docs -w @nestjs-utils/environment-variables-provider",
+    "postinstall": "husky"
   },
   "devDependencies": {
     "husky": "^9.1.7"
