@@ -9,12 +9,12 @@
     "tests"
   ],
   "scripts": {
-    "build": "npm run build -w @nestjs-utils/environment-variables-provider",
-    "format": "npm run format -w @nestjs-utils/environment-variables-provider",
-    "lint": "npm run lint -w @nestjs-utils/environment-variables-provider",
+    "build": "npm run build -w packages/nestjs-environment-variables-provider",
+    "format": "npm run format -w packages/nestjs-environment-variables-provider",
+    "lint": "npm run lint -w packages/nestjs-environment-variables-provider",
     "clean-code": "npm run clean-code --workspaces",
     "test": "npm run test -w tests",
-    "docs": "npm run docs -w @nestjs-utils/environment-variables-provider",
+    "docs": "npm run docs -w packages/nestjs-environment-variables-provider",
     "postinstall": "husky"
   },
   "devDependencies": {
