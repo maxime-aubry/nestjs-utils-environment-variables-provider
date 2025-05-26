@@ -1,4 +1,4 @@
-import { NumberProperty } from "nestjs-environment-variables-provider/decorators";
+import { NumberProperty } from "@nestjs-utils/environment-variables-provider/decorators";
 import type { IEnvironmentVariables } from "../test.utils.js";
 
 export class EnvironmentVariablesWithSingleValue

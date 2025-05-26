@@ -1,5 +1,5 @@
 {
-  "name": "nestjs-environment-variables-provider",
+  "name": "@nestjs-utils/environment-variables-provider",
   "version": "1.0.0",
   "description": "Environment variables provider for Nest.JS project",
   "type": "module",
@@ -48,8 +48,7 @@
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.1.0",
     "class-transformer": "^0.5.1",
-    "class-validator": "^0.14.2",
-    "cpy-cli": "^5.0.0"
+    "class-validator": "^0.14.2"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",

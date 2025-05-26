@@ -4,7 +4,7 @@ import {
 	EnvironmentConfigModule,
 	EnvironmentVariablesProvider,
 	InvalidEnvironmentVariablesException,
-} from "nestjs-environment-variables-provider";
+} from "@nestjs-utils/environment-variables-provider";
 import { expect } from "vitest";
 
 export interface IEnvironmentVariables<TValue> {

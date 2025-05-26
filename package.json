@@ -9,11 +9,11 @@
     "tests"
   ],
   "scripts": {
-    "build": "npm run build -w nestjs-environment-variables-provider",
-    "format": "npm run format -w nestjs-environment-variables-provider",
+    "build": "npm run build -w @nestjs-utils/environment-variables-provider",
+    "format": "npm run format -w @nestjs-utils/environment-variables-provider",
     "clean-code": "npm run clean-code --workspaces",
     "test": "npm run test -w tests",
-    "docs": "npm run docs -w nestjs-environment-variables-provider"
+    "docs": "npm run docs -w @nestjs-utils/environment-variables-provider"
   },
   "devDependencies": {
     "husky": "^9.1.7"

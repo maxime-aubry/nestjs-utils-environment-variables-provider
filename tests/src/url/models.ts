@@ -1,4 +1,4 @@
-import { UrlProperty } from "nestjs-environment-variables-provider/decorators";
+import { UrlProperty } from "@nestjs-utils/environment-variables-provider/decorators";
 import type { IEnvironmentVariables } from "../test.utils.js";
 
 export class EnvironmentVariablesWithSingleValue

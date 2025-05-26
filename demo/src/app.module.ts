@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { EnvironmentConfigModule } from 'nestjs-environment-variables-provider';
+import { EnvironmentConfigModule } from '@nestjs-utils/environment-variables-provider';
 import { AppController } from './app.controller.js';
 import { AppService } from './app.service.js';
 import { EnvironmentVariables } from './environement-variables.js';
