@@ -62,6 +62,7 @@ jobs:
     strategy:
       matrix:
         nestjs-version: ['11.x']
+        nestjs-config-version: ['4.x']
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -77,7 +78,7 @@ jobs:
 
       - name: Install specific NestJS version
         run: |
-          npm install --save-peer @nestjs/common@${{ matrix.nestjs-version }} @nestjs/core@${{ matrix.nestjs-version }} @nestjs/config@${{ matrix.nestjs-version }}
+          npm install --save-peer @nestjs/common@${{ matrix.nestjs-version }} @nestjs/core@${{ matrix.nestjs-version }} @nestjs/config@${{ matrix.nestjs-config-version }}
 
       - name: Build package
         run: npm run build
