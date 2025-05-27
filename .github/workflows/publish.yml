@@ -32,7 +32,7 @@ jobs:
 
       - name: Publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd packages/nestjs-environment-variables-provider
           if [ ${{ github.event.release.prerelease }} == true ]; then
