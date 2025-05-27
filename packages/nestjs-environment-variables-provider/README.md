@@ -6,17 +6,16 @@ This library enables you to get a collection of environment variable as a class 
 ## Required TypeScript Configuration
 For your NestJS project to work with this package, ensure your `tsconfig.json` has at least these compiler options:
 
-```json
+tsconfig.json
+``` JSON
 {
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "target": "ES2023",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "outDir": "./dist",
+    "target": "ES2023"
   }
 }
 ```
@@ -25,9 +24,7 @@ These settings are required because:
 - `emitDecoratorMetadata` and `experimentalDecorators`: Required for NestJS decorators and class validation
 - `module` and `moduleResolution`: Set to "NodeNext" for compatibility with modern Node.js
 - `target`: ES2023 or later for modern JavaScript features
-- `esModuleInterop`: For better compatibility with CommonJS and ES Modules
-- `strict`: Recommended for better type safety
-- `skipLibCheck`: To avoid type checking of node_modules
+- `outDir`: Defines the output directory for compiled JavaScript files, keeping the build artifacts (usually in dist/) separate from the source TypeScript files.
 
 ## Usage
 Define a class model to store your environment variables :
@@ -42,6 +39,11 @@ export class EnvironmentVariables {
     @EmailProperty()
     public readonly ADMIN_EMAIL!: string;
 }
+```
+
+``` env
+DATABASE_URL=test
+ADMIN_EMAIL=a.a@a.com
 ```
 
 Define your module and register the "EnvironmentConfigModule" module :
@@ -72,34 +74,6 @@ export class CustomService {
     const environementVariables: EnvironmentVariables = this.provider.getEnvironmentVariables(EnvironmentVariables);
     console.log('Environment Variables:', environementVariables);
   }
-}
-```
-
-## tsconfig.json
-``` JSON
-{
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
-    "declaration": true,
-    "emitDecoratorMetadata": true,
-    "esModuleInterop": true,
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "incremental": true,
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
-    "noFallthroughCasesInSwitch": false,
-    "noImplicitAny": false,
-    "outDir": "./dist",
-    "removeComments": true,
-    "skipLibCheck": true,
-    "sourceMap": true,
-    "strictBindCallApply": false,
-    "strictNullChecks": true,
-    "target": "ES2023"
-  },
-  "include": ["src/**/*"]
 }
 ```
 
