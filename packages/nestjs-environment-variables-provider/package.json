@@ -8,14 +8,16 @@
 	"types": "./dist/esm/index.d.ts",
 	"exports": {
 		".": {
-			"import": "./dist/esm/index.js",
+			"types": "./dist/esm/index.d.ts",
 			"require": "./dist/cjs/index.js",
-			"types": "./dist/esm/index.d.ts"
+			"import": "./dist/esm/index.js",
+			"default": "./dist/esm/index.js"
 		},
 		"./decorators": {
-			"import": "./dist/esm/decorators/index.js",
+			"types": "./dist/esm/decorators/index.d.ts",
 			"require": "./dist/cjs/decorators/index.js",
-			"types": "./dist/esm/decorators/index.d.ts"
+			"import": "./dist/esm/decorators/index.js",
+			"default": "./dist/esm/decorators/index.js"
 		}
 	},
 	"scripts": {
@@ -29,7 +31,8 @@
 		"clean-code": "npm run lint && npm run tsc && npm run format",
 		"tsc": "tsc",
 		"watch": "npm run build-js-main -- --watch & npm run build-js-esm -- --watch & npm run build-js-cjs -- --watch",
-		"docs": "typedoc"
+		"docs": "typedoc",
+		"prepublishOnly": "npm run build"
 	},
 	"lint-staged": {
 		"*.{js,ts,json,md}": "biome format --write"
@@ -68,7 +71,23 @@
 		"access": "public",
 		"provenance": true
 	},
-	"files": ["dist", "src"],
+	"files": [
+		"package.json",
+		"README.md",
+		"LICENSE",
+		"src/**/*.ts",
+		"dist/**/*.js",
+		"dist/**/*.js.map",
+		"dist/**/*.d.ts",
+		"dist/**/*.d.ts.map",
+		"!src/test/",
+		"!src/**/*_test.ts",
+		"!dist/test/",
+		"!dist/**/*_test.js",
+		"!dist/**/*_test.js.map",
+		"!dist/**/*_test.d.ts",
+		"!dist/**/*_test.d.ts.map"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/maxime-aubry/nestjs-utils-environment-variables-provider.git",
