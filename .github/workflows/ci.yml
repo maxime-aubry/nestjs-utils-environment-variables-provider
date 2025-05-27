@@ -37,8 +37,43 @@ jobs:
       - name: Run formatting
         run: biome format ./packages/nestjs-environment-variables-provider --write
 
+  build:
+    name: Build package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build package
+        run: npm run build
+
+      - name: Check dist folder
+        run: |
+          if [ ! -d "packages/nestjs-environment-variables-provider/dist" ]; then
+            echo "dist folder is missing"
+            exit 1
+          fi
+          if [ ! -f "packages/nestjs-environment-variables-provider/dist/esm/index.js" ]; then
+            echo "ESM build is missing"
+            exit 1
+          fi
+          if [ ! -f "packages/nestjs-environment-variables-provider/dist/cjs/index.js" ]; then
+            echo "CJS build is missing"
+            exit 1
+          fi
+
   test:
     name: Run tests
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -58,6 +93,7 @@ jobs:
 
   version-compatibility:
     name: NestJS Version Compatibility
+    needs: [build]
     runs-on: ubuntu-latest
     strategy:
       matrix:
