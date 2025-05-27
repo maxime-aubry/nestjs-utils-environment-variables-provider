@@ -30,11 +30,22 @@ jobs:
       - name: Build package
         run: npm run build -w packages/nestjs-environment-variables-provider
 
+      - name: Verify npm configuration
+        run: |
+          echo "Registry URL: $(npm config get registry)"
+          echo "Scope: $(npm config get scope)"
+          npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
       - name: Publish
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           cd packages/nestjs-environment-variables-provider
+          echo "Package content to be published:"
+          npm pack --dry-run
+          echo "Publishing package..."
           if [ ${{ github.event.release.prerelease }} == true ]; then
             npm publish --tag next --provenance --access public
           else
