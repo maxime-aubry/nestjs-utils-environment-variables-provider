@@ -9,5 +9,5 @@
   "excludePrivate": true,
   "excludeProtected": true,
   "includeVersion": true,
-  "readme": "../../README.md"
+  "readme": "README.md"
 }

@@ -1,6 +1,6 @@
 {
   "name": "nestjs-environment-variables-provider-monorepo",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "nestjs-environment-variables-provider monorepo",
   "type": "module",
   "workspaces": [
