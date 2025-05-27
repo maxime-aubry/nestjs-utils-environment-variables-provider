@@ -1,8 +1,33 @@
-
 # @otakusan76/nestjs-environment-variables-provider
 Environment variables provider for Nest.JS project.
 
 This library enables you to get a collection of environment variable as a class and validate model using by a class validation way.
+
+## Required TypeScript Configuration
+For your NestJS project to work with this package, ensure your `tsconfig.json` has at least these compiler options:
+
+```json
+{
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2023",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true
+  }
+}
+```
+
+These settings are required because:
+- `emitDecoratorMetadata` and `experimentalDecorators`: Required for NestJS decorators and class validation
+- `module` and `moduleResolution`: Set to "NodeNext" for compatibility with modern Node.js
+- `target`: ES2023 or later for modern JavaScript features
+- `esModuleInterop`: For better compatibility with CommonJS and ES Modules
+- `strict`: Recommended for better type safety
+- `skipLibCheck`: To avoid type checking of node_modules
 
 ## Usage
 Define a class model to store your environment variables :

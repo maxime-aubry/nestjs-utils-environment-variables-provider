@@ -1,1 +1,5 @@
-npx lint-staged
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Format staged files with Biome
+npx biome format --write $(git diff --cached --name-only --diff-filter=ACMR "*.ts" "*.js" "*.json" "*.md")
