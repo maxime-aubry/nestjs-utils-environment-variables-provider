@@ -76,12 +76,35 @@ export interface IsEmailOptions {
 }
 
 /**
- * Property decorator to validate and transform a field in an Email.
+ * This decorator can be used to validate and transform a field in a email or an array of emails.
  *
- * - Uses `class-transform` to transform the value.
- * - Uses `class-validator` to validate the value is an Email.
- *
+ * @param options Options to be passed to the decorator.
  * @param validationOptions Validation options (e.g. `each` for collections).
+ * @returns A property decorator that validates and transforms the field to an email or an array of emails.
+ * 
+ * Your can load environment variables in the form of an email.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { EmailProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @EmailProperty()
+ *     public readonly VALUE!: boolean;
+ * }
+ * ```
+ * 
+ * You also can load environment variables in the form of an array of emails.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { EmailProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @EmailProperty({}, { each: true })
+ *     public readonly VALUES!: boolean[];
+ * }
+ * ```
  */
 export function EmailProperty(
 	options?: IsEmailOptions,

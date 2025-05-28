@@ -28,12 +28,35 @@ export type UUIDVersion =
 	| 8;
 
 /**
- * Property decorator to validate and transform a field in an UUID.
+ * This decorator can be used to validate and transform a field in a UUID or an array of UUIDs.
  *
- * - Uses `class-transform` to transform the value.
- * - Uses `class-validator` to validate the value is an UUID.
- *
+ * @param versions UUID version to be passed to the decorator.
  * @param validationOptions Validation options (e.g. `each` for collections).
+ * @returns A property decorator that validates and transforms the field to an UUID or an array of UUIDs.
+ * 
+ * Your can load environment variables in the form of aa UUID.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { UUIDProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @UUIDProperty()
+ *     public readonly VALUE!: boolean;
+ * }
+ * ```
+ * 
+ * You also can load environment variables in the form of an array of UUIDs.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { UUIDProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @UUIDProperty("4", { each: true })
+ *     public readonly VALUES!: boolean[];
+ * }
+ * ```
  */
 export function UUIDProperty(
 	versions?: UUIDVersion,

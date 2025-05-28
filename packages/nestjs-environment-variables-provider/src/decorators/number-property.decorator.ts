@@ -29,12 +29,35 @@ export interface IsNumberOptions {
 }
 
 /**
- * Property decorator to validate and transform a field in an Number.
+ * This decorator can be used to validate and transform a field in a number or an array of numbers.
  *
- * - Uses `class-transform` to transform the value.
- * - Uses `class-validator` to validate the value is an Number.
- *
+ * @param options Options to be passed to the decorator.
  * @param validationOptions Validation options (e.g. `each` for collections).
+ * @returns A property decorator that validates and transforms the field to a number or an array of numbers.
+ * 
+ * Your can load environment variables in the form of a number.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { NumberProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @NumberProperty()
+ *     public readonly VALUE!: string;
+ * }
+ * ```
+ * 
+ * You also can load environment variables in the form of an array of numbers.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { NumberProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @NumberProperty({}, { each: true })
+ *     public readonly VALUES!: string[];
+ * }
+ * ```
  */
 export function NumberProperty(
 	options?: IsNumberOptions,

@@ -1,12 +1,10 @@
-# @otakusan76/nestjs-environment-variables-provider
-Environment variables provider for Nest.JS project.
+# Environment variables provider for Nest.JS project.
 
 This library enables you to get a collection of environment variable as a class and validate model using by a class validation way.
 
 ## Required TypeScript Configuration
 For your NestJS project to work with this package, ensure your `tsconfig.json` has at least these compiler options:
 
-tsconfig.json
 ``` JSON
 {
   "compilerOptions": {
@@ -27,10 +25,17 @@ These settings are required because:
 - `outDir`: Defines the output directory for compiled JavaScript files, keeping the build artifacts (usually in dist/) separate from the source TypeScript files.
 
 ## Usage
+Let's consider this .env file in your project.
+
+``` env
+DATABASE_URL=test
+ADMIN_EMAIL=a.a@a.com
+```
+
 Define a class model to store your environment variables :
 
 ``` Typescript
-import { EmailProperty, StringProperty } from '@otakusan76/nestjs-environment-variables-provider';
+import { EmailProperty, StringProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
 
 export class EnvironmentVariables {
     @StringProperty()
@@ -39,11 +44,6 @@ export class EnvironmentVariables {
     @EmailProperty()
     public readonly ADMIN_EMAIL!: string;
 }
-```
-
-``` env
-DATABASE_URL=test
-ADMIN_EMAIL=a.a@a.com
 ```
 
 Define your module and register the "EnvironmentConfigModule" module :

@@ -1,6 +1,6 @@
 {
 	"name": "@otakusan76/nestjs-environment-variables-provider",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "Environment variables provider for Nest.JS project",
 	"type": "module",
 	"main": "./dist/cjs/index.js",
@@ -65,6 +65,7 @@
 		"lint-staged": "^16.0.0",
 		"ts-node": "^10.9.2",
 		"typedoc": "^0.28.4",
+		"typedoc-github-theme": "^0.3.0",
 		"typescript": "^5.8.3"
 	},
 	"publishConfig": {
