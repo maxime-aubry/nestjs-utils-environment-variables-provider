@@ -9,12 +9,34 @@ import { SEPARATOR } from "../utils/index.js";
 import type { ValidationOptions } from "./type.js";
 
 /**
- * Property decorator to validate and transform a field in a Boolean or array of Booleans.
- *
- * - Uses `class-transform` to transform the value.
- * - Uses `class-validator` to validate the value is a Boolean or a Boolean string.
+ * This decorator can be used to validate and transform a field in a Boolean or an array of Booleans.
  *
  * @param validationOptions Validation options (e.g. `each` for collections).
+ * @returns A property decorator that validates and transforms the field to a boolean or an array of booleans.
+ * 
+ * Your can load environment variables in the form of a boolean.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { BooleanProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @BooleanProperty()
+ *     public readonly VALUE!: boolean;
+ * }
+ * ```
+ * 
+ * You also can load environment variables in the form of an array of booleans.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { BooleanProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @BooleanProperty({ each: true })
+ *     public readonly VALUES!: boolean[];
+ * }
+ * ```
  */
 export function BooleanProperty(
 	validationOptions?: ValidationOptions,

@@ -68,11 +68,11 @@ export interface IsURLOptions {
 	 */
 	allow_trailing_dot?: boolean | undefined;
 	/**
-	 * If `allow_protocol_relative_urls` is set to `true`, protocol-relative URLs (e.g. `//example.com`) will be accepted.
+	 * If `allow_protocol_relative_URLs` is set to `true`, protocol-relative URLs (e.g. `//example.com`) will be accepted.
 	 *
 	 * @default false
 	 */
-	allow_protocol_relative_urls?: boolean | undefined;
+	allow_protocol_relative_URLs?: boolean | undefined;
 	/**
 	 * If `disallow_auth` is set to `true`, URLs containing authentication (e.g. `user:pass@`) will be rejected.
 	 *
@@ -107,12 +107,35 @@ export interface IsURLOptions {
 }
 
 /**
- * Property decorator to validate and transform a field in an URL.
+ * This decorator can be used to validate and transform a field in a URL or an array of URLs.
  *
- * - Uses `class-transform` to transform the value.
- * - Uses `class-validator` to validate the value is an URL.
- *
+ * @param options Options to be passed to the decorator.
  * @param validationOptions Validation options (e.g. `each` for collections).
+ * @returns A property decorator that validates and transforms the field to an URL or an array of URLs.
+ * 
+ * Your can load environment variables in the form of an URL.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { UrlProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @UrlProperty()
+ *     public readonly VALUE!: boolean;
+ * }
+ * ```
+ * 
+ * You also can load environment variables in the form of an array of URLs.
+ * 
+ * @example
+ * ``` TypeScript
+ * import { UrlProperty } from '@otakusan76/nestjs-environment-variables-provider/decorators';
+ * 
+ * export class EnvironmentVariables {
+ *     @UrlProperty({}, { each: true })
+ *     public readonly VALUES!: boolean[];
+ * }
+ * ```
  */
 export function UrlProperty(
 	options?: IsURLOptions,
